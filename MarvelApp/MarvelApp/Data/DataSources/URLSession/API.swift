@@ -31,7 +31,6 @@ extension CharactersRequest.Response {
     struct Character: Decodable {
         let id: Int?
         let name: String?
-        let description: String?
         let thumbnail: Image?
         let comics: ComicList?
         let stories: StoryList?

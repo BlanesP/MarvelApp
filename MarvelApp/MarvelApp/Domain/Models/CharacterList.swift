@@ -17,7 +17,6 @@ extension CharacterList {
     struct Character: Identifiable {
         let id: Int
         let name: String
-        let description: String?
         let icon: URL
         let comics: [String]
         let stories: [String]

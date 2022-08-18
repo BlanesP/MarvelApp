@@ -71,7 +71,6 @@ extension CharacterList.Character {
 
         self.id = id
         self.name = name
-        self.description = request.description
         self.icon = iconUrl
         self.comics = request.comics?.items?.compactMap { $0.name } ?? []
         self.stories = request.stories?.items?.compactMap { $0.name } ?? []

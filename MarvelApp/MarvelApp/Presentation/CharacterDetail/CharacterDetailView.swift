@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+private extension LocalizedStringKey {
+    static var nothingToSee: Self { "Nothing to see here..." }
+}
+
 private extension CGFloat {
     static var circleWidth: Self { 2 }
     static var imageSize: Self { 250 }
@@ -26,7 +30,12 @@ struct CharacterDetailView: View {
 
             pickerView
 
-            listView
+            if currentList.isEmpty {
+                Text(.nothingToSee)
+                    .font(.subheadline)
+            } else {
+                listView
+            }
 
             Spacer()
         }
@@ -65,6 +74,7 @@ struct CharacterDetailView: View {
     var listView: some View {
         List(currentList, id: \.self) { item in
             Text(item)
+                .buttonStyle(.plain)
         }
         .listStyle(.plain)
     }
@@ -78,7 +88,6 @@ struct CharacterDetailView_Previews: PreviewProvider {
             character: CharacterList.Character(
                 id: 1,
                 name: "Test",
-                description: "asdasdas",
                 icon: URL(string: "")!,
                 comics: [],
                 stories: [],
