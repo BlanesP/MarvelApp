@@ -10,6 +10,8 @@ import SwiftUI
 
 private extension CGFloat {
     static var progressScale: Self { 1.5 }
+    static var circleWidth: Self { 2 }
+    static var imageSize: Self { 44 }
 }
 
 private extension LocalizedStringKey {
@@ -109,8 +111,20 @@ private struct CharacterRowView: View {
     let character: CharacterList.Character
 
     var body: some View {
-        HStack(alignment: .center) {
-            VStack(alignment: .leading, spacing: .sizeNormal) {
+        HStack(alignment: .center, spacing: .sizeLarge) {
+
+            AsyncImage(url: character.icon) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(width: .imageSize, height: .imageSize)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.gray, lineWidth: .circleWidth))
+
+            VStack(alignment: .leading, spacing: .sizeSmall) {
                 Text(character.name)
                     .font(.headline)
                     .bold()

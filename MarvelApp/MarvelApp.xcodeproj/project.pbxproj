@@ -78,6 +78,13 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		1E86979B28AE39E70052ACF6 /* CharacterDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CharacterDetail;
+			sourceTree = "<group>";
+		};
 		1EA9BAC328AE065F002F6C36 = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +217,7 @@
 		1EA9BB0128AE21C3002F6C36 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				1E86979B28AE39E70052ACF6 /* CharacterDetail */,
 				1E86979A28AE380A0052ACF6 /* Utils */,
 				1EA9BB0228AE21D8002F6C36 /* CharacterList */,
 			);
