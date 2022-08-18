@@ -26,8 +26,8 @@ extension CharacterListViewModel {
 
     func input(_ input: ViewInput) {
         switch input {
-        case .fetchData(let refresh) where pagination.canFetchMore || characters.isEmpty:
-            fetchCharacters(fetchMore: !refresh)
+        case .fetchData(let refresh) where pagination.canFetchMore:
+            fetchCharacters(refresh: refresh)
         default:
             break
         }
@@ -48,15 +48,10 @@ extension CharacterListViewModel {
 //MARK: - Private methods
 
 private extension CharacterListViewModel {
-    func fetchCharacters(fetchMore: Bool) {
+    func fetchCharacters(refresh: Bool) {
 
         pagination.isFetching = true
-        if fetchMore {
-            pagination.page += 1
-            output.send(.loadingMore)
-        } else {
-            output.send(.loading)
-        }
+        output.send(refresh ? .loading : .loadingMore)
 
         useCase
             .execute(page: pagination.page, pageSize: pagination.pageSize)
@@ -64,15 +59,15 @@ private extension CharacterListViewModel {
             .receive(on: .main)
             .sink(
                 receiveCompletion: { [weak self] completion in
-                    if case .failure = completion, !fetchMore {
-                        self?.output.send(.error)
-                    }
-
                     self?.pagination.isFetching = false
-                    self?.output.send(.ready)
+                    if case .failure = completion, refresh {
+                        self?.output.send(.error)
+                    } else {
+                        self?.output.send(.ready)
+                    }
                 },
                 receiveValue: { [weak self] result in
-                    if !fetchMore {
+                    if refresh {
                         self?.characters = result.characters
                     } else {
                         self?.characters.append(contentsOf: result.characters)
@@ -92,12 +87,17 @@ private extension CharacterListViewModel {
     final class Pagination {
         let pageSize = 15
 
-        var page = 0
         var isFetching = false
         var currentCount = 0
         var totalCount = 0
 
+        var page: Int {
+            currentCount / pageSize
+        }
+
         var canFetchMore: Bool {
+            if totalCount == 0 && !isFetching { return true }
+
             return !isFetching && currentCount < totalCount
         }
     }
