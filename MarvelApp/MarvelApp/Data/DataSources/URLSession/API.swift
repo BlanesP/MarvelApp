@@ -33,10 +33,46 @@ extension CharactersRequest.Response {
         let name: String?
         let description: String?
         let thumbnail: Image?
+        let comics: ComicList?
+        let stories: StoryList?
+        let events: EventList?
+        let series: SeriesList?
     }
 
     struct Image: Decodable {
         let path: String?
         let `extension`: String?
+    }
+
+    struct ComicList: Decodable {
+        let items: [ComicSummary]?
+    }
+
+    struct ComicSummary: Decodable {
+        let name: String?
+    }
+
+    struct StoryList: Decodable {
+        let items: [ComicSummary]?
+    }
+
+    struct StorySummary: Decodable {
+        let name: String?
+    }
+
+    struct EventList: Decodable {
+        let items: [ComicSummary]?
+    }
+
+    struct EventSummary: Decodable {
+        let name: String?
+    }
+
+    struct SeriesList: Decodable {
+        let items: [ComicSummary]?
+    }
+
+    struct SeriesSummary: Decodable {
+        let name: String?
     }
 }

@@ -41,6 +41,7 @@ extension CharactersRepositoryImpl: CharactersRepository {
 }
 
 //MARK: - Mappers
+
 extension CharacterList {
     init(from request: CharactersRequest.Response) throws {
         guard let data = request.data,
@@ -72,5 +73,9 @@ extension CharacterList.Character {
         self.name = name
         self.description = request.description
         self.icon = iconUrl
+        self.comics = request.comics?.items?.compactMap { $0.name } ?? []
+        self.stories = request.stories?.items?.compactMap { $0.name } ?? []
+        self.events = request.events?.items?.compactMap { $0.name } ?? []
+        self.series = request.series?.items?.compactMap { $0.name } ?? []
     }
 }
