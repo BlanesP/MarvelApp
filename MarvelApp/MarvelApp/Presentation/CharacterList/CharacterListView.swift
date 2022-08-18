@@ -90,7 +90,7 @@ struct CharacterListView: View {
                 )
                 .background(
                     NavigationLink(
-                        destination: Text("Detail"),
+                        destination: viewFactory.characterDetailView(for: character),
                         label: { EmptyView() }
                     )
                     .opacity(0)

@@ -10,6 +10,7 @@
 		1E86979128AE280B0052ACF6 /* CustomSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E86979028AE280B0052ACF6 /* CustomSizes.swift */; };
 		1E86979328AE281F0052ACF6 /* CustomImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E86979228AE281F0052ACF6 /* CustomImages.swift */; };
 		1E86979528AE28450052ACF6 /* View+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E86979428AE28450052ACF6 /* View+Utils.swift */; };
+		1E86979D28AE4C7B0052ACF6 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E86979C28AE4C7B0052ACF6 /* CharacterDetailView.swift */; };
 		1EA9BAD028AE065F002F6C36 /* MarvelAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA9BACF28AE065F002F6C36 /* MarvelAppApp.swift */; };
 		1EA9BAD228AE065F002F6C36 /* CharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA9BAD128AE065F002F6C36 /* CharacterListView.swift */; };
 		1EA9BAD428AE0660002F6C36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EA9BAD328AE0660002F6C36 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		1E86979028AE280B0052ACF6 /* CustomSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSizes.swift; sourceTree = "<group>"; };
 		1E86979228AE281F0052ACF6 /* CustomImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImages.swift; sourceTree = "<group>"; };
 		1E86979428AE28450052ACF6 /* View+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Utils.swift"; sourceTree = "<group>"; };
+		1E86979C28AE4C7B0052ACF6 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
 		1EA9BACC28AE065F002F6C36 /* MarvelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EA9BACF28AE065F002F6C36 /* MarvelAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAppApp.swift; sourceTree = "<group>"; };
 		1EA9BAD128AE065F002F6C36 /* CharacterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListView.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		1E86979B28AE39E70052ACF6 /* CharacterDetail */ = {
 			isa = PBXGroup;
 			children = (
+				1E86979C28AE4C7B0052ACF6 /* CharacterDetailView.swift */,
 			);
 			path = CharacterDetail;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				1EA9BAF928AE1937002F6C36 /* BasicError.swift in Sources */,
 				1EA9BAD228AE065F002F6C36 /* CharacterListView.swift in Sources */,
 				1EA9BAE228AE06DB002F6C36 /* API.swift in Sources */,
+				1E86979D28AE4C7B0052ACF6 /* CharacterDetailView.swift in Sources */,
 				1EA9BB0428AE21E8002F6C36 /* CharacterListViewModel.swift in Sources */,
 				1EA9BAF728AE1812002F6C36 /* CharacterList.swift in Sources */,
 				1EA9BAEF28AE1555002F6C36 /* Authorized.swift in Sources */,

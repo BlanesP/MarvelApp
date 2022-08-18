@@ -10,10 +10,14 @@ import SwiftUI
 struct ViewFactory {
     private let domainFactory = DomainFactory()
 
-    var characterListView: CharacterListView {
+    var characterListView: some View {
         CharacterListView(
             viewModel: CharacterListViewModel(useCase: domainFactory.characterListUseCase)
         )
+    }
+
+    func characterDetailView(for character: CharacterList.Character) -> some View {
+        CharacterDetailView(character: character)
     }
 }
 
