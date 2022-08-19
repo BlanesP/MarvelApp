@@ -59,6 +59,7 @@ struct CharacterListView: View {
 
                     if loadingMore {
                         ProgressView()
+                            .padding(.bottom, .sizeNormal)
                     }
                 }
             }
