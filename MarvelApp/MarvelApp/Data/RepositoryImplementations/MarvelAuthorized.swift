@@ -15,7 +15,7 @@ extension MarvelAuthorized {
               let publicKey = getKey("MARVEL_PUBLIC_KEY")
         else { return nil }
         let timestamp = "\(Date().timeIntervalSince1970)"
-        let hash = MD5(string: "\(timestamp)\(privateKey)\(publicKey)")
+        let hash = "\(timestamp)\(privateKey)\(publicKey)".md5
 
         return MarvelAuthorization(ts: timestamp, apikey: publicKey, hash: hash)
     }

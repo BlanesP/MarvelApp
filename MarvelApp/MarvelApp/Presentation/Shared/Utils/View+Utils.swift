@@ -15,4 +15,8 @@ extension View {
     func defaultShadow() -> some View {
         self.shadow(color: .shadowColor, radius: .sizeSmall)
     }
+
+    func addAttribution(_ text: String?) -> some View {
+        modifier(AttributionTextModifier(text: text))
+    }
 }

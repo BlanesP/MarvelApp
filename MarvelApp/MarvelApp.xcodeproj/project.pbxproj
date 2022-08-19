@@ -28,7 +28,7 @@
 		1EA9BAE228AE06DB002F6C36 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA9BAE128AE06DB002F6C36 /* API.swift */; };
 		1EA9BAE528AE07B9002F6C36 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA9BAE428AE07B9002F6C36 /* Logger.swift */; };
 		1EA9BAE728AE0822002F6C36 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA9BAE628AE0822002F6C36 /* Endpoint.swift */; };
-		1EA9BAE928AE0DE4002F6C36 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA9BAE828AE0DE4002F6C36 /* String+MD5.swift */; };
+		1EA9BAE928AE0DE4002F6C36 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA9BAE828AE0DE4002F6C36 /* String+Utils.swift */; };
 		1EA9BAED28AE154C002F6C36 /* CharactersRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA9BAEC28AE154C002F6C36 /* CharactersRepositoryImpl.swift */; };
 		1EA9BAEF28AE1555002F6C36 /* MarvelAuthorized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA9BAEE28AE1555002F6C36 /* MarvelAuthorized.swift */; };
 		1EA9BAF328AE1727002F6C36 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EA9BAF228AE1727002F6C36 /* Keys.plist */; };
@@ -41,6 +41,8 @@
 		1EA9BB0828AE24E5002F6C36 /* Scheduler+Queues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA9BB0728AE24E5002F6C36 /* Scheduler+Queues.swift */; };
 		1EE831C728AF584F00EFFB8D /* ChainedExpectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE831C628AF584F00EFFB8D /* ChainedExpectation.swift */; };
 		1EE831D228AF5C2100EFFB8D /* MarvelAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE831D128AF5C2100EFFB8D /* MarvelAppUITests.swift */; };
+		1EE831DC28AF741D00EFFB8D /* StringUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE831DB28AF741D00EFFB8D /* StringUtilsTests.swift */; };
+		1EE831E028AF77FC00EFFB8D /* AttributionTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE831DF28AF77FC00EFFB8D /* AttributionTextModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,7 +86,7 @@
 		1EA9BAE128AE06DB002F6C36 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		1EA9BAE428AE07B9002F6C36 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		1EA9BAE628AE0822002F6C36 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		1EA9BAE828AE0DE4002F6C36 /* String+MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
+		1EA9BAE828AE0DE4002F6C36 /* String+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
 		1EA9BAEC28AE154C002F6C36 /* CharactersRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepositoryImpl.swift; sourceTree = "<group>"; };
 		1EA9BAEE28AE1555002F6C36 /* MarvelAuthorized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAuthorized.swift; sourceTree = "<group>"; };
 		1EA9BAF228AE1727002F6C36 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
@@ -98,6 +100,8 @@
 		1EE831C628AF584F00EFFB8D /* ChainedExpectation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChainedExpectation.swift; sourceTree = "<group>"; };
 		1EE831CF28AF5C2100EFFB8D /* MarvelAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EE831D128AF5C2100EFFB8D /* MarvelAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAppUITests.swift; sourceTree = "<group>"; };
+		1EE831DB28AF741D00EFFB8D /* StringUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtilsTests.swift; sourceTree = "<group>"; };
+		1EE831DF28AF77FC00EFFB8D /* AttributionTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributionTextModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +169,7 @@
 		1E8697B028AE669A0052ACF6 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				1EE831DA28AF740700EFFB8D /* Infrastructure */,
 				1EE831CA28AF5B9B00EFFB8D /* Presentation */,
 				1EE831C928AF5B8E00EFFB8D /* Domain */,
 				1EE831C828AF5B7700EFFB8D /* Utils */,
@@ -255,7 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				1EA9BAE428AE07B9002F6C36 /* Logger.swift */,
-				1EA9BAE828AE0DE4002F6C36 /* String+MD5.swift */,
+				1EA9BAE828AE0DE4002F6C36 /* String+Utils.swift */,
 				1EA9BAF828AE1937002F6C36 /* BasicError.swift */,
 				1EA9BB0528AE2309002F6C36 /* ViewFactory.swift */,
 				1EA9BB0728AE24E5002F6C36 /* Scheduler+Queues.swift */,
@@ -327,8 +332,8 @@
 		1EA9BB0128AE21C3002F6C36 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				1EE831DE28AF77E400EFFB8D /* Shared */,
 				1E86979B28AE39E70052ACF6 /* CharacterDetail */,
-				1E86979A28AE380A0052ACF6 /* Utils */,
 				1EA9BB0228AE21D8002F6C36 /* CharacterList */,
 			);
 			path = Presentation;
@@ -374,6 +379,31 @@
 				1EE831D128AF5C2100EFFB8D /* MarvelAppUITests.swift */,
 			);
 			path = MarvelAppUITests;
+			sourceTree = "<group>";
+		};
+		1EE831DA28AF740700EFFB8D /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				1EE831DB28AF741D00EFFB8D /* StringUtilsTests.swift */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		1EE831DD28AF77DB00EFFB8D /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				1EE831DF28AF77FC00EFFB8D /* AttributionTextModifier.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		1EE831DE28AF77E400EFFB8D /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				1EE831DD28AF77DB00EFFB8D /* Modifiers */,
+				1E86979A28AE380A0052ACF6 /* Utils */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -515,6 +545,7 @@
 				1E8697BE28AEACB70052ACF6 /* CharacterListViewModelTests.swift in Sources */,
 				1E8697AD28AE66280052ACF6 /* URLSessionDataSourceMock.swift in Sources */,
 				1E8697BA28AEA0D60052ACF6 /* CharacterListMock.swift in Sources */,
+				1EE831DC28AF741D00EFFB8D /* StringUtilsTests.swift in Sources */,
 				1E8697B828AEA04A0052ACF6 /* CharactersRepositoryMock.swift in Sources */,
 				1E8697AF28AE665D0052ACF6 /* BaseMock.swift in Sources */,
 			);
@@ -530,9 +561,10 @@
 				1EA9BAFF28AE1A5A002F6C36 /* GetCharacterListUseCase.swift in Sources */,
 				1EA9BB0828AE24E5002F6C36 /* Scheduler+Queues.swift in Sources */,
 				1EA9BAE528AE07B9002F6C36 /* Logger.swift in Sources */,
-				1EA9BAE928AE0DE4002F6C36 /* String+MD5.swift in Sources */,
+				1EA9BAE928AE0DE4002F6C36 /* String+Utils.swift in Sources */,
 				1E86979128AE280B0052ACF6 /* CustomSizes.swift in Sources */,
 				1EA9BAED28AE154C002F6C36 /* CharactersRepositoryImpl.swift in Sources */,
+				1EE831E028AF77FC00EFFB8D /* AttributionTextModifier.swift in Sources */,
 				1EA9BAE028AE0693002F6C36 /* URLSessionDataSource.swift in Sources */,
 				1EA9BB0628AE2309002F6C36 /* ViewFactory.swift in Sources */,
 				1E86979328AE281F0052ACF6 /* CustomImages.swift in Sources */,

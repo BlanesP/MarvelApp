@@ -60,15 +60,8 @@ struct CharacterListView: View {
                         ProgressView()
                     }
                 }
-
-                Spacer()
-
-                if !viewModel.attribution.isEmpty {
-                    Text(viewModel.attribution)
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                }
             }
+            .addAttribution(viewModel.attribution)
             .navigationTitle(.allCharacters)
         }
         .alert(.errorMsg, isPresented: $showError) {

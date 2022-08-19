@@ -64,7 +64,7 @@ extension CharacterList.Character {
               let name = request.name,
               let iconPath = request.thumbnail?.path,
               let iconExtension = request.thumbnail?.extension,
-              let iconUrl = URL(string: "\(iconPath.replacingOccurrences(of: "http:", with: "https:")).\(iconExtension)")
+              let iconUrl = URL(string: "\(iconPath.secureUrl).\(iconExtension)")
         else {
             return nil
         }

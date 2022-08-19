@@ -28,6 +28,7 @@ struct CharacterDetailView: View {
         VStack(alignment: .center, spacing: .sizeLargeExtra) {
 
             headerImage
+                .padding(.top, .sizeMedium)
 
             pickerView
 
@@ -37,17 +38,10 @@ struct CharacterDetailView: View {
             } else {
                 listView
             }
-
-            Spacer()
-
-            if !attribution.isEmpty {
-                Text(attribution)
-                    .font(.footnote)
-                    .foregroundColor(.gray)
-            }
         }
         .frame(maxWidth: .infinity)
         .padding(.horizontal, .sizeLarge)
+        .addAttribution(attribution)
         .navigationTitle(character.name)
         .onAppear {
             currentList = character.comics
@@ -65,7 +59,6 @@ struct CharacterDetailView: View {
             .frame(width: .imageSize, height: .imageSize)
             .clipShape(Circle())
             .overlay(Circle().stroke(Color.gray, lineWidth: .circleWidth))
-            .padding(.top, .sizeMedium)
     }
 
     var pickerView: some View {
