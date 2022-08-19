@@ -21,7 +21,7 @@ struct AttributionTextModifier: ViewModifier {
                     .font(.footnote)
                     .foregroundColor(.gray)
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .padding(.top, .sizeMedium)
+                    .padding(.vertical, .sizeMedium)
                     .background(
                         Color.white
                             .defaultShadow()

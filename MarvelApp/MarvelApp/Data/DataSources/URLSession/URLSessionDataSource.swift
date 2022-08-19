@@ -12,15 +12,15 @@ protocol URLSessionDataSource {
     func fetchCharacters(input: CharactersRequest.Input) -> AnyPublisher<CharactersRequest.Response, Error>
 }
 
-final class URLSessionDataSourceImpl { }
+final class URLSessionDataSourceImpl: Logger { }
 
-extension URLSessionDataSourceImpl: URLSessionDataSource, Logger {
+extension URLSessionDataSourceImpl: URLSessionDataSource {
 
     func fetchCharacters(input: CharactersRequest.Input) -> AnyPublisher<CharactersRequest.Response, Error> {
         log("Fetching characters...")
 
-        return makeGetRequest(
-            for: Endpoint(type: .characters, params: input)
+        return GETRequest(
+            for: Endpoint(baseURL: .marvel, request: .characters, params: input)
         )
     }
 }
@@ -28,9 +28,9 @@ extension URLSessionDataSourceImpl: URLSessionDataSource, Logger {
 //MARK: - Utils
 
 private extension URLSessionDataSourceImpl {
-    func makeGetRequest<T: Decodable>(for endpoint: Endpoint) -> AnyPublisher<T, Error> {
+    func GETRequest<T: Decodable>(for endpoint: Endpoint) -> AnyPublisher<T, Error> {
 
-        guard let url = endpoint.buildGetURL() else {
+        guard let url = endpoint.buildGETURL() else {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
         }
 

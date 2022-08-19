@@ -9,5 +9,4 @@ import SwiftUI
 
 extension Image {
     static var arrowRight: Self { .init(systemName: "chevron.right") }
-    static var imagePlaceholder: Self { .init(systemName: "photo") }
 }

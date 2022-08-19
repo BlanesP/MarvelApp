@@ -27,7 +27,7 @@ struct CharacterDetailView: View {
     let attribution: String
 
     @State private var currentList = [String]()
-    @State private var currentItemType: ItemType = .comics
+    @State private var currentPickerSelection: PickerSelectionType = .comics
 
     var body: some View {
         VStack(alignment: .center, spacing: .sizeLargeExtra) {
@@ -67,13 +67,13 @@ struct CharacterDetailView: View {
     }
 
     var pickerView: some View {
-        Picker("", selection: $currentItemType) {
-            ForEach(ItemType.allCases, id: \.self) {
+        Picker("", selection: $currentPickerSelection) {
+            ForEach(PickerSelectionType.allCases, id: \.self) {
                 Text($0.text).tag($0)
             }
         }
         .pickerStyle(.segmented)
-        .onChange(of: currentItemType) { newValue in
+        .onChange(of: currentPickerSelection) { newValue in
             switch newValue {
             case .comics:
                 currentList = character.comics
@@ -97,7 +97,8 @@ struct CharacterDetailView: View {
 }
 
 //MARK: - Components
-private enum ItemType: CaseIterable {
+
+private enum PickerSelectionType: CaseIterable {
     case comics, stories, events, series
 
     var text: LocalizedStringKey {
@@ -122,9 +123,9 @@ struct CharacterDetailView_Previews: PreviewProvider {
             character: CharacterList.Character(
                 id: 1,
                 name: "Test",
-                icon: URL(string: "")!,
-                comics: [],
-                stories: [],
+                icon: URL(string: "https://www.apple.com")!,
+                comics: ["A comic"],
+                stories: ["A story"],
                 events: [],
                 series: []
             ),

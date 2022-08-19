@@ -8,6 +8,7 @@
 import Combine
 
 final class CharacterListViewModel: ObservableObject, Logger {
+    
     @Published var characters = [CharacterList.Character]()
     @Published var attribution = ""
     let output = PassthroughSubject<ViewOutput, Never>()
@@ -24,7 +25,6 @@ final class CharacterListViewModel: ObservableObject, Logger {
 //MARK: - View Comunication
 
 extension CharacterListViewModel {
-
     func input(_ input: ViewInput) {
         switch input {
         case .fetchData(let refresh) where pagination.canFetchMore:

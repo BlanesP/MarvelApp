@@ -38,6 +38,7 @@ private extension String {
 //MARK: - Main View
 
 struct CharacterListView: View {
+    
     @Environment(\.viewFactory) private var viewFactory
 
     @ObservedObject var viewModel: CharacterListViewModel
@@ -107,6 +108,7 @@ struct CharacterListView: View {
 //MARK: - AdditionalViews
 
 private struct CharacterRowView: View {
+
     let character: CharacterList.Character
 
     var body: some View {

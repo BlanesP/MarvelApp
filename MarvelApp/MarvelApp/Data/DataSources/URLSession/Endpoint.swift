@@ -8,8 +8,6 @@
 import Combine
 import Foundation
 
-//MARK: - Private extensions
-
 private extension Encodable {
     var urlQueryItems: [URLQueryItem] {
         let mirror = Mirror(reflecting: self)
@@ -21,16 +19,14 @@ private extension Encodable {
     }
 }
 
-//MARK: -
-
 struct Endpoint {
-    private var baseURL: String { "https://gateway.marvel.com:443/v1/public" }
 
-    let type: EndpointType
+    let baseURL: BaseURLType
+    let request: RequestType
     let params: Encodable?
 
-    func buildGetURL() -> URL? {
-        guard var components = URLComponents(string: "\(baseURL)/\(type.rawValue)") else {
+    func buildGETURL() -> URL? {
+        guard var components = URLComponents(string: "\(baseURL.rawValue)/\(request.rawValue)") else {
             return nil
         }
         if let params = params {
@@ -43,6 +39,10 @@ struct Endpoint {
 
 //MARK: - Components
 
-enum EndpointType: String {
+enum RequestType: String {
     case characters = "characters"
+}
+
+enum BaseURLType: String {
+    case marvel = "https://gateway.marvel.com:443/v1/public"
 }

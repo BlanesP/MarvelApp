@@ -7,6 +7,8 @@
 
 import Foundation
 
+//This should be generated from request data
+
 struct CharactersRequest {
     struct Input: Encodable {
         let ts: String
