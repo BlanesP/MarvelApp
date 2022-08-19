@@ -81,8 +81,7 @@ class CharacterListViewModelTests: XCTestCase {
         let mock = CharacterList.mock
         useCase.result = mock
         var result = [CharacterListViewModel.ViewOutput]()
-        let firstExpectation = self.expectation(description: "fetch success")
-        let secondExpectation = self.expectation(description: "fetch more success")
+        let expectation = ChainedExpectation(description: "success", totalExpectations: 2, ignoreLast: true)
 
         //When
         viewModel
@@ -90,19 +89,17 @@ class CharacterListViewModelTests: XCTestCase {
             .sink(
                 receiveValue: {
                     result.append($0)
-                    if result == [.loading, .ready] {
-                        firstExpectation.fulfill()
-                    } else if result == [.loading, .ready, .loadingMore, .ready] {
-                        secondExpectation.fulfill()
+                    if $0 == .ready {
+                        expectation.fulfill { [weak self] _ in
+                            self?.viewModel.input(.fetchData(refresh: false))
+                        }
                     }
                 }
             )
             .store(in: &cancellables)
 
         viewModel.input(.fetchData(refresh: true))
-        wait(for: [firstExpectation], timeout: 0.1)
-        viewModel.input(.fetchData(refresh: false))
-        wait(for: [secondExpectation], timeout: 0.1)
+        wait(for: [expectation], timeout: 0.1)
 
         //Then
         XCTAssertEqual(result, [.loading, .ready, .loadingMore, .ready])
@@ -114,29 +111,25 @@ class CharacterListViewModelTests: XCTestCase {
         let mock = CharacterList.mock
         useCase.result = mock
         var result = [CharacterListViewModel.ViewOutput]()
-        let firstExpectation = self.expectation(description: "fetch success")
-        let secondExpectation = self.expectation(description: "fetch more failure")
-
+        let expectation = ChainedExpectation(description: "failure", totalExpectations: 2, ignoreLast: true)
         //When
         viewModel
             .output
             .sink(
                 receiveValue: {
                     result.append($0)
-                    if result == [.loading, .ready] {
-                        firstExpectation.fulfill()
-                    } else if result == [.loading, .ready, .loadingMore, .ready] {
-                        secondExpectation.fulfill()
+                    if $0 == .ready {
+                        expectation.fulfill { [weak self] _ in
+                            self?.useCase.result = BasicError(message: "Mock error")
+                            self?.viewModel.input(.fetchData(refresh: false))
+                        }
                     }
                 }
             )
             .store(in: &cancellables)
 
         viewModel.input(.fetchData(refresh: true))
-        wait(for: [firstExpectation], timeout: 0.1)
-        useCase.result = BasicError(message: "Mock error")
-        viewModel.input(.fetchData(refresh: false))
-        wait(for: [secondExpectation], timeout: 0.1)
+        wait(for: [expectation], timeout: 0.1)
 
         //Then
         XCTAssertEqual(result, [.loading, .ready, .loadingMore, .ready]) //if pagination fails we just hide loader
