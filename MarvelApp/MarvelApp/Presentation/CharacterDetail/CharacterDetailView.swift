@@ -9,6 +9,10 @@ import SwiftUI
 
 private extension LocalizedStringKey {
     static var nothingToSee: Self { "Nothing to see here..." }
+    static var comics: Self { "Comics" }
+    static var stories: Self { "Stories" }
+    static var events: Self { "Events" }
+    static var series: Self { "Series" }
 }
 
 private extension CGFloat {
@@ -23,6 +27,7 @@ struct CharacterDetailView: View {
     let attribution: String
 
     @State private var currentList = [String]()
+    @State private var currentItemType: ItemType = .comics
 
     var body: some View {
         VStack(alignment: .center, spacing: .sizeLargeExtra) {
@@ -62,13 +67,24 @@ struct CharacterDetailView: View {
     }
 
     var pickerView: some View {
-        Picker("What is your favorite color?", selection: $currentList) {
-            Text("Comics").tag(character.comics)
-            Text("Stories").tag(character.stories)
-            Text("Events").tag(character.events)
-            Text("Series").tag(character.series)
+        Picker("", selection: $currentItemType) {
+            ForEach(ItemType.allCases, id: \.self) {
+                Text($0.text).tag($0)
+            }
         }
         .pickerStyle(.segmented)
+        .onChange(of: currentItemType) { newValue in
+            switch newValue {
+            case .comics:
+                currentList = character.comics
+            case .stories:
+                currentList = character.stories
+            case .events:
+                currentList = character.events
+            case .series:
+                currentList = character.series
+            }
+        }
     }
 
     var listView: some View {
@@ -77,6 +93,24 @@ struct CharacterDetailView: View {
                 .buttonStyle(.plain)
         }
         .listStyle(.plain)
+    }
+}
+
+//MARK: - Components
+private enum ItemType: CaseIterable {
+    case comics, stories, events, series
+
+    var text: LocalizedStringKey {
+        switch self {
+        case .comics:
+            return .comics
+        case .stories:
+            return .stories
+        case .events:
+            return.events
+        case .series:
+            return .series
+        }
     }
 }
 
