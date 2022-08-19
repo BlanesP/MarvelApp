@@ -20,6 +20,10 @@ final class CharacterListViewModel: ObservableObject, Logger {
     init(useCase: GetCharacterListUseCase) {
         self.useCase = useCase
     }
+
+    deinit {
+        cancellables.removeAll()
+    }
 }
 
 //MARK: - View Comunication
