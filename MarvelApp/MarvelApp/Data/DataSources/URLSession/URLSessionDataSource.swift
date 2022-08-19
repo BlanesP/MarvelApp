@@ -10,6 +10,9 @@ import Foundation
 
 protocol URLSessionDataSource {
     func fetchCharacters(input: CharactersRequest.Input) -> AnyPublisher<CharactersRequest.Response, Error>
+    func fetchComic(input: ComicRequest.Input, id: String) -> AnyPublisher<ComicRequest.Response, Error>
+    func fetchEvent(input: EventRequest.Input, id: String) -> AnyPublisher<EventRequest.Response, Error>
+    func fetchSerie(input: SerieRequest.Input, id: String) -> AnyPublisher<SerieRequest.Response, Error>
 }
 
 final class URLSessionDataSourceImpl: Logger { }
@@ -21,6 +24,30 @@ extension URLSessionDataSourceImpl: URLSessionDataSource {
 
         return GETRequest(
             for: Endpoint(baseURL: .marvel, request: .characters, params: input)
+        )
+    }
+
+    func fetchComic(input: ComicRequest.Input, id: String) -> AnyPublisher<ComicRequest.Response, Error> {
+        log("Fetching comic...")
+
+        return GETRequest(
+            for: Endpoint(baseURL: .marvel, request: .comics, params: input, urlParams: [id])
+        )
+    }
+
+    func fetchEvent(input: EventRequest.Input, id: String) -> AnyPublisher<EventRequest.Response, Error> {
+        log("Fetching event...")
+
+        return GETRequest(
+            for: Endpoint(baseURL: .marvel, request: .events, params: input, urlParams: [id])
+        )
+    }
+
+    func fetchSerie(input: SerieRequest.Input, id: String) -> AnyPublisher<SerieRequest.Response, Error> {
+        log("Fetching story...")
+
+        return GETRequest(
+            for: Endpoint(baseURL: .marvel, request: .stories, params: input, urlParams: [id])
         )
     }
 }

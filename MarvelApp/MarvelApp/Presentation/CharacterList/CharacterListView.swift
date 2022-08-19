@@ -114,7 +114,7 @@ private struct CharacterRowView: View {
     var body: some View {
         HStack(alignment: .center, spacing: .sizeLarge) {
 
-            AsyncImage(url: character.icon) { image in
+            AsyncImage(url: character.iconUrl) { image in
                     image
                         .resizable()
                         .scaledToFill()

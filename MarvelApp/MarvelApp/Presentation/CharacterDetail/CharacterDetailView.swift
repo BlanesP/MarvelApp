@@ -23,10 +23,12 @@ private extension CGFloat {
 //MARK: - Main View
 
 struct CharacterDetailView: View {
+
+    @Environment(\.viewFactory) private var viewFactory
+
     let character: CharacterList.Character
     let attribution: String
 
-    @State private var currentList = [String]()
     @State private var currentPickerSelection: PickerSelectionType = .comics
 
     var body: some View {
@@ -48,13 +50,10 @@ struct CharacterDetailView: View {
         .padding(.horizontal, .sizeLarge)
         .addAttribution(attribution)
         .navigationTitle(character.name)
-        .onAppear {
-            currentList = character.comics
-        }
     }
 
     var headerImage: some View {
-        AsyncImage(url: character.icon) { image in
+        AsyncImage(url: character.iconUrl) { image in
                 image
                     .resizable()
                     .scaledToFill()
@@ -73,26 +72,58 @@ struct CharacterDetailView: View {
             }
         }
         .pickerStyle(.segmented)
-        .onChange(of: currentPickerSelection) { newValue in
-            switch newValue {
-            case .comics:
-                currentList = character.comics
-            case .stories:
-                currentList = character.stories
-            case .events:
-                currentList = character.events
-            case .series:
-                currentList = character.series
-            }
-        }
     }
 
     var listView: some View {
-        List(currentList, id: \.self) { item in
-            Text(item)
-                .buttonStyle(.plain)
+        List(currentList, id: \.id) { item in
+            ZStack {
+                HStack {
+                    Text(item.title)
+
+                    Spacer()
+
+                    if item.type != .story {
+                        Image.arrowRight
+                    }
+                }
+                .listRowSeparator(.hidden)
+                .listRowInsets(
+                    EdgeInsets(
+                        top: .sizeMedium,
+                        leading: .sizeMedium,
+                        bottom: .sizeMedium,
+                        trailing: .sizeMedium
+                    )
+                )
+
+                if item.type != .story {
+                    NavigationLink(
+                        destination: viewFactory.characterItemView(for: item, attribution: attribution),
+                        label: { EmptyView() }
+                    )
+                    .opacity(0)
+                }
+            }
+            .buttonStyle(.plain)
         }
         .listStyle(.plain)
+    }
+}
+
+//MARK: - Utils
+
+private extension CharacterDetailView {
+    var currentList: [CharacterItem] {
+        switch currentPickerSelection {
+        case .comics:
+            return character.comics
+        case .stories:
+            return character.stories
+        case .events:
+            return character.events
+        case .series:
+            return character.series
+        }
     }
 }
 
@@ -123,9 +154,9 @@ struct CharacterDetailView_Previews: PreviewProvider {
             character: CharacterList.Character(
                 id: 1,
                 name: "Test",
-                icon: URL(string: "https://www.apple.com")!,
-                comics: ["A comic"],
-                stories: ["A story"],
+                iconUrl: URL(string: "https://www.apple.com")!,
+                comics: [CharacterItem(id: 1, title: "A comic", type: .comic)],
+                stories: [CharacterItem(id: 2, title: "A story", type: .story)],
                 events: [],
                 series: []
             ),

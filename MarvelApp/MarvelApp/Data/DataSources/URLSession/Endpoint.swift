@@ -24,9 +24,15 @@ struct Endpoint {
     let baseURL: BaseURLType
     let request: RequestType
     let params: Encodable?
+    var urlParams: [String]?
 
     func buildGETURL() -> URL? {
-        guard var components = URLComponents(string: "\(baseURL.rawValue)/\(request.rawValue)") else {
+        var urlString = "\(baseURL.rawValue)/\(request.rawValue)"
+        if let urlParams = urlParams, !urlParams.isEmpty {
+            urlString.append("/\(urlParams.joined(separator: "/"))")
+        }
+
+        guard var components = URLComponents(string: urlString) else {
             return nil
         }
         if let params = params {
@@ -41,6 +47,9 @@ struct Endpoint {
 
 enum RequestType: String {
     case characters = "characters"
+    case comics = "comics"
+    case events = "events"
+    case stories = "series"
 }
 
 enum BaseURLType: String {

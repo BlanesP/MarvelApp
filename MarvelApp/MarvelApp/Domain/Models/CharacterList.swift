@@ -17,10 +17,10 @@ extension CharacterList {
     struct Character: Identifiable {
         let id: Int
         let name: String
-        let icon: URL
-        let comics: [String]
-        let stories: [String]
-        let events: [String]
-        let series: [String]
+        let iconUrl: URL
+        let comics: [CharacterItem]
+        let stories: [CharacterItem]
+        let events: [CharacterItem]
+        let series: [CharacterItem]
     }
 }

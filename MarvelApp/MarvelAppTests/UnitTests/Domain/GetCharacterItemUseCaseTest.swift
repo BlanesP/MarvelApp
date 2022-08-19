@@ -1,19 +1,21 @@
 //
-//  CharactersRepositoryTests.swift
-//  CharactersRepositoryTests
+//  GetCharacterItemUseCaseTest.swift
+//  MarvelAppTests
 //
-//  Created by Pau Blanes on 18/8/22.
+//  Created by Pau Blanes on 19/8/22.
 //
+
+import XCTest
 
 import Combine
 import XCTest
 @testable import MarvelApp
 
-class CharactersRepositoryTests: XCTestCase {
+class GetCharacterItemUseCaseTest: XCTestCase {
 
     private var cancellables = Set<AnyCancellable>()
-    private let dataSource = URLSessionDataSourceMock()
-    private lazy var repository = CharactersRepositoryImpl(dataSource: dataSource)
+    private let repository = CharactersRepositoryMock()
+    private lazy var useCase = GetCharacterItemUseCaseImpl(repository: repository)
 
     override func tearDown() {
         super.tearDown()
@@ -22,16 +24,16 @@ class CharactersRepositoryTests: XCTestCase {
 
     //MARK: - Comic
 
-    func testFetchComicSuccess() {
+    func testExecuteComicSuccess() {
         //Given
-        let mock = ComicRequest.Response.mock
-        dataSource.result = mock
+        let mock = CharacterItem.mock(for: .comic)
+        repository.result = mock
         var result: CharacterItem?
         let expectation = self.expectation(description: "success")
 
         //When
-        repository
-            .fetchComic(id: 1)
+        useCase
+            .execute(comicId: 1)
             .sink(
                 receiveCompletion: { _ in expectation.fulfill() },
                 receiveValue: { result = $0 }
@@ -42,178 +44,125 @@ class CharactersRepositoryTests: XCTestCase {
 
         //Then
         XCTAssertNotNil(result)
-        XCTAssertEqual(result!.id, mock.data!.results!.first!.id)
+        XCTAssertEqual(result!.id, mock.id)
     }
 
-    func testFetchComicFailure() {
+    func testExecuteComicFailure() {
         //Given
-        dataSource.result = BasicError(message: "Mock error")
+        repository.result = BasicError(message: "Mock error")
         var result: CharacterItem?
-        var error: Error?
-        let expectation = self.expectation(description: "success")
-
-        //When
-        repository
-            .fetchComic(id: 1)
-            .sink(
-                receiveCompletion: { completion in
-                    if case .failure(let e) = completion {
-                        error = e
-                    }
-                    expectation.fulfill()
-                },
-                receiveValue: { result = $0 }
-            )
-            .store(in: &cancellables)
-
-        waitForExpectations(timeout: 1)
-
-        //Then
-        XCTAssertNil(result)
-        XCTAssertNotNil(error)
-    }
-
-    //MARK: - Fetch event
-
-    func testFetchEventSuccess() {
-        //Given
-        let mock = EventRequest.Response.mock
-        dataSource.result = mock
-        var result: CharacterItem?
-        let expectation = self.expectation(description: "success")
-
-        //When
-        repository
-            .fetchEvent(id: 1)
-            .sink(
-                receiveCompletion: { _ in expectation.fulfill() },
-                receiveValue: { result = $0 }
-            )
-            .store(in: &cancellables)
-
-        waitForExpectations(timeout: 1)
-
-        //Then
-        XCTAssertNotNil(result)
-        XCTAssertEqual(result!.id, mock.data!.results!.first!.id)
-    }
-
-    func testFetchEventFailure() {
-        //Given
-        dataSource.result = BasicError(message: "Mock error")
-        var result: CharacterItem?
-        var error: Error?
-        let expectation = self.expectation(description: "success")
-
-        //When
-        repository
-            .fetchEvent(id: 1)
-            .sink(
-                receiveCompletion: { completion in
-                    if case .failure(let e) = completion {
-                        error = e
-                    }
-                    expectation.fulfill()
-                },
-                receiveValue: { result = $0 }
-            )
-            .store(in: &cancellables)
-
-        waitForExpectations(timeout: 1)
-
-        //Then
-        XCTAssertNil(result)
-        XCTAssertNotNil(error)
-    }
-
-    //MARK: - Fetch serie
-
-    func testFetchSerieSuccess() {
-        //Given
-        let mock = SerieRequest.Response.mock
-        dataSource.result = mock
-        var result: CharacterItem?
-        let expectation = self.expectation(description: "success")
-
-        //When
-        repository
-            .fetchSerie(id: 1)
-            .sink(
-                receiveCompletion: { _ in expectation.fulfill() },
-                receiveValue: { result = $0 }
-            )
-            .store(in: &cancellables)
-
-        waitForExpectations(timeout: 1)
-
-        //Then
-        XCTAssertNotNil(result)
-        XCTAssertEqual(result!.id, mock.data!.results!.first!.id)
-    }
-
-    func testFetchSerieFailure() {
-        //Given
-        dataSource.result = BasicError(message: "Mock error")
-        var result: CharacterItem?
-        var error: Error?
-        let expectation = self.expectation(description: "success")
-
-        //When
-        repository
-            .fetchSerie(id: 1)
-            .sink(
-                receiveCompletion: { completion in
-                    if case .failure(let e) = completion {
-                        error = e
-                    }
-                    expectation.fulfill()
-                },
-                receiveValue: { result = $0 }
-            )
-            .store(in: &cancellables)
-
-        waitForExpectations(timeout: 1)
-
-        //Then
-        XCTAssertNil(result)
-        XCTAssertNotNil(error)
-    }
-
-    //MARK: - Characters
-
-    func testFetchCharactersSuccess() {
-        //Given
-        let mock = CharactersRequest.Response.mock
-        dataSource.result = mock
-        var result: CharacterList?
-        let expectation = self.expectation(description: "success")
-
-        //When
-        repository
-            .fetchCharacters(page: 0, pageSize: 15)
-            .sink(
-                receiveCompletion: { _ in expectation.fulfill() },
-                receiveValue: { result = $0 }
-            )
-            .store(in: &cancellables)
-
-        waitForExpectations(timeout: 1)
-
-        //Then
-        XCTAssertNotNil(result)
-        XCTAssertEqual(result!.characters.count, mock.data!.results!.count)
-    }
-
-    func testFetchCharactersFailure() {
-        //Given
-        dataSource.result = BasicError(message: "Mock error")
-        var result: CharacterList?
         var error: Error?
         let expectation = self.expectation(description: "failure")
 
         //When
-        repository
-            .fetchCharacters(page: 0, pageSize: 15)
+        useCase
+            .execute(comicId: 1)
+            .sink(
+                receiveCompletion: { completion in
+                    if case .failure(let e) = completion {
+                        error = e
+                    }
+                    expectation.fulfill()
+                },
+                receiveValue: { result = $0 }
+            )
+            .store(in: &cancellables)
+
+        waitForExpectations(timeout: 1)
+
+        //Then
+        XCTAssertNil(result)
+        XCTAssertNotNil(error)
+    }
+
+    //MARK: - Event
+
+    func testExecuteEventSuccess() {
+        //Given
+        let mock = CharacterItem.mock(for: .event)
+        repository.result = mock
+        var result: CharacterItem?
+        let expectation = self.expectation(description: "success")
+
+        //When
+        useCase
+            .execute(eventId: 1)
+            .sink(
+                receiveCompletion: { _ in expectation.fulfill() },
+                receiveValue: { result = $0 }
+            )
+            .store(in: &cancellables)
+
+        waitForExpectations(timeout: 1)
+
+        //Then
+        XCTAssertNotNil(result)
+        XCTAssertEqual(result!.id, mock.id)
+    }
+
+    func testExecuteEventFailure() {
+        //Given
+        repository.result = BasicError(message: "Mock error")
+        var result: CharacterItem?
+        var error: Error?
+        let expectation = self.expectation(description: "failure")
+
+        //When
+        useCase
+            .execute(eventId: 1)
+            .sink(
+                receiveCompletion: { completion in
+                    if case .failure(let e) = completion {
+                        error = e
+                    }
+                    expectation.fulfill()
+                },
+                receiveValue: { result = $0 }
+            )
+            .store(in: &cancellables)
+
+        waitForExpectations(timeout: 1)
+
+        //Then
+        XCTAssertNil(result)
+        XCTAssertNotNil(error)
+    }
+
+    //MARK: - Serie
+
+    func testExecuteSerieSuccess() {
+        //Given
+        let mock = CharacterItem.mock(for: .serie)
+        repository.result = mock
+        var result: CharacterItem?
+        let expectation = self.expectation(description: "success")
+
+        //When
+        useCase
+            .execute(serieId: 1)
+            .sink(
+                receiveCompletion: { _ in expectation.fulfill() },
+                receiveValue: { result = $0 }
+            )
+            .store(in: &cancellables)
+
+        waitForExpectations(timeout: 1)
+
+        //Then
+        XCTAssertNotNil(result)
+        XCTAssertEqual(result!.id, mock.id)
+    }
+
+    func testExecuteSerieFailure() {
+        //Given
+        repository.result = BasicError(message: "Mock error")
+        var result: CharacterItem?
+        var error: Error?
+        let expectation = self.expectation(description: "failure")
+
+        //When
+        useCase
+            .execute(serieId: 1)
             .sink(
                 receiveCompletion: { completion in
                     if case .failure(let e) = completion {
@@ -232,3 +181,4 @@ class CharactersRepositoryTests: XCTestCase {
         XCTAssertNotNil(error)
     }
 }
+

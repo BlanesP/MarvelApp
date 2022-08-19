@@ -17,7 +17,7 @@ extension CharacterList {
                 Character(
                     id: 1,
                     name: "Name",
-                    icon: URL(string: "https://www.a.com")!,
+                    iconUrl: URL(string: "https://www.a.com")!,
                     comics: [],
                     stories: [],
                     events: [],

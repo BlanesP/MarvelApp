@@ -13,6 +13,18 @@ final class URLSessionDataSourceMock: BaseMock {
 }
 
 extension URLSessionDataSourceMock: URLSessionDataSource {
+    func fetchComic(input: ComicRequest.Input, id: String) -> AnyPublisher<ComicRequest.Response, Error> {
+        mockPublisherResult()
+    }
+
+    func fetchEvent(input: EventRequest.Input, id: String) -> AnyPublisher<EventRequest.Response, Error> {
+        mockPublisherResult()
+    }
+
+    func fetchSerie(input: SerieRequest.Input, id: String) -> AnyPublisher<SerieRequest.Response, Error> {
+        mockPublisherResult()
+    }
+
     func fetchCharacters(input: CharactersRequest.Input) -> AnyPublisher<CharactersRequest.Response, Error> {
         mockPublisherResult()
     }
