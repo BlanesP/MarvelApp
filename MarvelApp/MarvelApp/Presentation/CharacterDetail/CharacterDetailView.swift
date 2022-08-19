@@ -20,6 +20,7 @@ private extension CGFloat {
 
 struct CharacterDetailView: View {
     let character: CharacterList.Character
+    let attribution: String
 
     @State private var currentList = [String]()
 
@@ -38,6 +39,12 @@ struct CharacterDetailView: View {
             }
 
             Spacer()
+
+            if !attribution.isEmpty {
+                Text(attribution)
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+            }
         }
         .frame(maxWidth: .infinity)
         .padding(.horizontal, .sizeLarge)
@@ -93,7 +100,8 @@ struct CharacterDetailView_Previews: PreviewProvider {
                 stories: [],
                 events: [],
                 series: []
-            )
+            ),
+            attribution: "Preview"
         )
     }
 }

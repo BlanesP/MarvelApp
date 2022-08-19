@@ -46,6 +46,7 @@ class CharacterListViewModelTests: XCTestCase {
         //Then
         XCTAssertEqual(result, [.loading, .ready])
         XCTAssertEqual(viewModel.characters.count, mock.characters.count)
+        XCTAssertFalse(viewModel.attribution.isEmpty)
     }
 
     func testFetchError() {
@@ -74,6 +75,7 @@ class CharacterListViewModelTests: XCTestCase {
         //Then
         XCTAssertEqual(result, [.loading, .error])
         XCTAssertTrue(viewModel.characters.isEmpty)
+        XCTAssertTrue(viewModel.attribution.isEmpty)
     }
 
     func testFetchMoreSuccess() {
@@ -104,6 +106,7 @@ class CharacterListViewModelTests: XCTestCase {
         //Then
         XCTAssertEqual(result, [.loading, .ready, .loadingMore, .ready])
         XCTAssertEqual(viewModel.characters.count, mock.characters.count * 2)
+        XCTAssertFalse(viewModel.attribution.isEmpty)
     }
 
     func testFetchMoreFailure() {
@@ -134,5 +137,6 @@ class CharacterListViewModelTests: XCTestCase {
         //Then
         XCTAssertEqual(result, [.loading, .ready, .loadingMore, .ready]) //if pagination fails we just hide loader
         XCTAssertEqual(viewModel.characters.count, mock.characters.count)
+        XCTAssertFalse(viewModel.attribution.isEmpty)
     }
 }

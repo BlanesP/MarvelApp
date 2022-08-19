@@ -13,3 +13,7 @@ It also features `Unit Tests`and `UI Tests`.
 ## Use
 
 After downloading the app go to `Keys.plist` file. There you can find `MARVEL_PUBLIC_KEY` and `MARVEL_PRIVATE_KEY`. Please fill the fields with your own keys or don't hesitate to contact me for more information. 
+
+## Credit
+
+Data provided by Marvel. © 2022 Marvel

@@ -12,7 +12,7 @@ extension CharacterList {
     static var mock: Self {
         CharacterList(
             total: 2,
-            attributionText: "",
+            attributionText: "An attribution",
             characters: [
                 Character(
                     id: 1,

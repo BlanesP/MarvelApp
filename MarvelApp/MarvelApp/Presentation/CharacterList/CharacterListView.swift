@@ -62,6 +62,12 @@ struct CharacterListView: View {
                 }
 
                 Spacer()
+
+                if !viewModel.attribution.isEmpty {
+                    Text(viewModel.attribution)
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                }
             }
             .navigationTitle(.allCharacters)
         }
@@ -90,7 +96,7 @@ struct CharacterListView: View {
                 )
                 .background(
                     NavigationLink(
-                        destination: viewFactory.characterDetailView(for: character),
+                        destination: viewFactory.characterDetailView(for: character, attribution: viewModel.attribution),
                         label: { EmptyView() }
                     )
                     .opacity(0)

@@ -9,6 +9,7 @@ import Combine
 
 final class CharacterListViewModel: ObservableObject, Logger {
     @Published var characters = [CharacterList.Character]()
+    @Published var attribution = ""
     let output = PassthroughSubject<ViewOutput, Never>()
 
     private lazy var cancellables = Set<AnyCancellable>()
@@ -73,6 +74,7 @@ private extension CharacterListViewModel {
                         self?.characters.append(contentsOf: result.characters)
                     }
 
+                    self?.attribution = result.attributionText
                     self?.pagination.currentCount = self?.characters.count ?? 0
                     self?.pagination.totalCount = result.total
                 }

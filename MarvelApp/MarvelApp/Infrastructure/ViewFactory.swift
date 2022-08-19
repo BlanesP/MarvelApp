@@ -16,8 +16,8 @@ struct ViewFactory {
         )
     }
 
-    func characterDetailView(for character: CharacterList.Character) -> some View {
-        CharacterDetailView(character: character)
+    func characterDetailView(for character: CharacterList.Character, attribution: String) -> some View {
+        CharacterDetailView(character: character, attribution: attribution)
     }
 }
 
