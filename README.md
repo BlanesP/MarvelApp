@@ -1,6 +1,6 @@
 # MarvelApp
 
-An iOS app that shows you all marvel characters and details of each one using the [Marvel API](https://developer.marvel.com/)
+An iOS app that shows you all Marvel characters, and details of each one, using the [Marvel API](https://developer.marvel.com/)
 
 ## Architecture
 
@@ -8,7 +8,7 @@ This app is build with `Clean Architecture` and `MVVM`. For the views it uses `S
 
 To fetch the list of Marvel characters it uses `URLSession` to avoid third party dependencies. Even so, all the URLSession logic is contained in the DataSource so it can be easily modified.
 
-It also features `Unit Tests`and `UI Tests`. 
+It also features `Unit Tests` and `UI Tests`. 
 
 ## Use
 
