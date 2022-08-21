@@ -49,7 +49,7 @@ enum RequestType: String {
     case characters = "characters"
     case comics = "comics"
     case events = "events"
-    case stories = "series"
+    case series = "series"
 }
 
 enum BaseURLType: String {

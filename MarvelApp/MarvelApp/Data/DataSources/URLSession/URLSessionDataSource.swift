@@ -44,10 +44,10 @@ extension URLSessionDataSourceImpl: URLSessionDataSource {
     }
 
     func fetchSerie(input: SerieRequest.Input, id: String) -> AnyPublisher<SerieRequest.Response, Error> {
-        log("Fetching story...")
+        log("Fetching serie...")
 
         return GETRequest(
-            for: Endpoint(baseURL: .marvel, request: .stories, params: input, urlParams: [id])
+            for: Endpoint(baseURL: .marvel, request: .series, params: input, urlParams: [id])
         )
     }
 }

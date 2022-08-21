@@ -14,6 +14,14 @@ The app also includes `Unit Tests` and `UI Tests`.
 
 After downloading the app go to `Keys.plist` file. There you can find `MARVEL_PUBLIC_KEY` and `MARVEL_PRIVATE_KEY`. Please fill the fields with your own keys or don't hesitate to contact me for more information. 
 
+## Changelog
+
+- 1.0.0 (19/08/2022): See all Marvel characters and details of each one.
+- 1.0.1 (21/08/2022):
+    - Fixed memory leak. 
+    - Fixed threading error.
+    - Improved character item view.
+
 ## Credit
 
 Data provided by Marvel. © 2022 Marvel

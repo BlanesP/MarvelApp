@@ -108,11 +108,11 @@ extension CharactersRepositoryImpl: CharactersRepository {
                 id: "\(id)"
             )
             .tryMap {
-                guard let story = $0.data?.results?.first else {
-                    throw BasicError(message: "No story")
+                guard let serie = $0.data?.results?.first else {
+                    throw BasicError(message: "No serie")
                 }
 
-                return try CharacterItem(from: story)
+                return try CharacterItem(from: serie)
             }
             .eraseToAnyPublisher()
     }
@@ -227,7 +227,7 @@ extension CharacterItem {
         guard let id = request.id,
               let title = request.title
         else {
-            throw BasicError(message: "Could not parse EventRequest")
+            throw BasicError(message: "Could not parse SerieRequest")
         }
 
         self.id = id

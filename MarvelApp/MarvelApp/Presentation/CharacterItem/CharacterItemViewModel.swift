@@ -19,6 +19,10 @@ final class CharacterItemViewModel: ObservableObject {
         self.item = item
         self.useCase = useCase
     }
+
+    deinit {
+        cancellables.removeAll()
+    }
 }
 
 //MARK: - View Comunication
@@ -55,6 +59,8 @@ private extension CharacterItemViewModel {
         output.send(.loading)
 
         publisher
+            .subscribe(on: .global)
+            .receive(on: .main)
             .sink(
                 receiveCompletion: { [weak self] completion in
                     if case .failure = completion {

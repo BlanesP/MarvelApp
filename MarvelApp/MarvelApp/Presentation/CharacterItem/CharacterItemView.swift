@@ -27,10 +27,11 @@ struct CharacterItemView: View {
     @State private var showError = false
 
     var body: some View {
-        VStack {
+        VStack(spacing: .zero) {
             Text(viewModel.item.title)
                 .font(.title)
                 .bold()
+                .multilineTextAlignment(.center)
 
             if loading {
                 ProgressView()
@@ -77,7 +78,6 @@ struct CharacterItemView: View {
                 Link(.readMore, destination: detailUrl)
             }
         }
-        .frame(maxWidth: .infinity, alignment: .center)
     }
 }
 
@@ -95,6 +95,9 @@ private extension CharacterItemView {
 
 struct CharacterItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ViewFactory().characterItemView(for: CharacterItem(id: 1, title: "Test", type: .comic), attribution: "Preview")
+        ViewFactory().characterItemView(
+            for: CharacterItem(id: 1, title: "Test", type: .comic),
+            attribution: "Preview"
+        )
     }
 }

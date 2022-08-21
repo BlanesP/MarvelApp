@@ -37,6 +37,6 @@ extension GetCharacterItemUseCaseImpl: GetCharacterItemUseCase {
     func execute(serieId: Int) -> AnyPublisher<CharacterItem, Error> {
         log("Executing use case...")
 
-        return repository.fetchComic(id: serieId)
+        return repository.fetchSerie(id: serieId)
     }
 }
