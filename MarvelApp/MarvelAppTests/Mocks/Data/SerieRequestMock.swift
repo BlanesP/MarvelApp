@@ -14,7 +14,7 @@ extension SerieRequest.Response {
             data: SerieDataContainer(
                 results: [
                     Serie(
-                        id: 1,
+                        id: UUID().hashValue,
                         title: "Title",
                         description: "Description",
                         thumbnail: nil,

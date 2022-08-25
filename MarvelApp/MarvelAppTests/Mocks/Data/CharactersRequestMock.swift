@@ -16,7 +16,7 @@ extension CharactersRequest.Response {
                 total: 1,
                 results: [
                     Character(
-                        id: 1,
+                        id: UUID().hashValue,
                         name: "Name",
                         thumbnail: Image(
                             path: "https://www.a.com",

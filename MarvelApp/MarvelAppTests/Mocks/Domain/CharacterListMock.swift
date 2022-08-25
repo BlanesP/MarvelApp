@@ -15,7 +15,7 @@ extension CharacterList {
             attributionText: "An attribution",
             characters: [
                 Character(
-                    id: 1,
+                    id: UUID().hashValue,
                     name: "Name",
                     iconUrl: URL(string: "https://www.a.com")!,
                     comics: [],

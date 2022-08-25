@@ -40,7 +40,7 @@ class GetCharacterItemUseCaseTest: XCTestCase {
             )
             .store(in: &cancellables)
 
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: 0.1)
 
         //Then
         XCTAssertNotNil(result)
@@ -68,7 +68,7 @@ class GetCharacterItemUseCaseTest: XCTestCase {
             )
             .store(in: &cancellables)
 
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: 0.1)
 
         //Then
         XCTAssertNil(result)
@@ -93,7 +93,7 @@ class GetCharacterItemUseCaseTest: XCTestCase {
             )
             .store(in: &cancellables)
 
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: 0.1)
 
         //Then
         XCTAssertNotNil(result)
@@ -121,7 +121,7 @@ class GetCharacterItemUseCaseTest: XCTestCase {
             )
             .store(in: &cancellables)
 
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: 0.1)
 
         //Then
         XCTAssertNil(result)
@@ -146,7 +146,7 @@ class GetCharacterItemUseCaseTest: XCTestCase {
             )
             .store(in: &cancellables)
 
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: 0.1)
 
         //Then
         XCTAssertNotNil(result)
@@ -174,7 +174,7 @@ class GetCharacterItemUseCaseTest: XCTestCase {
             )
             .store(in: &cancellables)
 
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: 0.1)
 
         //Then
         XCTAssertNil(result)

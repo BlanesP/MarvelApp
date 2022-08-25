@@ -14,7 +14,7 @@ extension ComicRequest.Response {
             data: ComicDataContainer(
                 results: [
                     Comic(
-                        id: 1,
+                        id: UUID().hashValue,
                         title: "Title",
                         description: "Description",
                         thumbnail: nil,

@@ -14,7 +14,7 @@ extension EventRequest.Response {
             data: EventDataContainer(
                 results: [
                     Event(
-                        id: 1,
+                        id: UUID().hashValue,
                         title: "Title",
                         description: "Description",
                         thumbnail: nil,

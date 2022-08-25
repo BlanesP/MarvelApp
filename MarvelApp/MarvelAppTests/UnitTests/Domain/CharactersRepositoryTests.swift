@@ -38,7 +38,7 @@ class CharactersRepositoryTests: XCTestCase {
             )
             .store(in: &cancellables)
 
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: 0.1)
 
         //Then
         XCTAssertNotNil(result)
@@ -66,7 +66,7 @@ class CharactersRepositoryTests: XCTestCase {
             )
             .store(in: &cancellables)
 
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: 0.1)
 
         //Then
         XCTAssertNil(result)
@@ -91,7 +91,7 @@ class CharactersRepositoryTests: XCTestCase {
             )
             .store(in: &cancellables)
 
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: 0.1)
 
         //Then
         XCTAssertNotNil(result)
@@ -119,7 +119,7 @@ class CharactersRepositoryTests: XCTestCase {
             )
             .store(in: &cancellables)
 
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: 0.1)
 
         //Then
         XCTAssertNil(result)
@@ -144,7 +144,7 @@ class CharactersRepositoryTests: XCTestCase {
             )
             .store(in: &cancellables)
 
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: 0.1)
 
         //Then
         XCTAssertNotNil(result)
@@ -172,7 +172,7 @@ class CharactersRepositoryTests: XCTestCase {
             )
             .store(in: &cancellables)
 
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: 0.1)
 
         //Then
         XCTAssertNil(result)
@@ -197,7 +197,7 @@ class CharactersRepositoryTests: XCTestCase {
             )
             .store(in: &cancellables)
 
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: 0.1)
 
         //Then
         XCTAssertNotNil(result)
@@ -225,7 +225,7 @@ class CharactersRepositoryTests: XCTestCase {
             )
             .store(in: &cancellables)
 
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: 0.1)
 
         //Then
         XCTAssertNil(result)
