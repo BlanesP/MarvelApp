@@ -17,10 +17,15 @@ After downloading the app go to `Keys.plist` file. There you can find `MARVEL_PU
 ## Changelog
 
 - 1.0.0 (19/08/2022): See all Marvel characters and details of each one.
+
 - 1.0.1 (21/08/2022):
     - Fixed memory leak. 
     - Fixed threading error.
     - Improved character item view.
+    
+- 1.1.0 (25/08/2022):
+    - Added snapshot testing
+    - Improved unit testing coverage
 
 ## Credit
 
