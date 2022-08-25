@@ -54,6 +54,11 @@
 		1EE831F928AFEFD200EFFB8D /* CharacterItemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE831F828AFEFD200EFFB8D /* CharacterItemMock.swift */; };
 		1EE831FB28AFF08400EFFB8D /* CharacterItemViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE831FA28AFF08400EFFB8D /* CharacterItemViewModelTests.swift */; };
 		1EE831FD28AFF0C400EFFB8D /* GetCharacterItemUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE831FC28AFF0C400EFFB8D /* GetCharacterItemUseCaseMock.swift */; };
+		1EE96F1328B7435F00414BE7 /* CharacterRowViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE96F1228B7435F00414BE7 /* CharacterRowViewTests.swift */; };
+		1EE96F1628B745FD00414BE7 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 1EE96F1528B745FD00414BE7 /* SnapshotTesting */; };
+		1EE96F1828B7482F00414BE7 /* CharacterListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE96F1728B7482F00414BE7 /* CharacterListViewTests.swift */; };
+		1EE96F1A28B750B100414BE7 /* CharacterDetailViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE96F1928B750B100414BE7 /* CharacterDetailViewTests.swift */; };
+		1EE96F1C28B7515400414BE7 /* CharacterItemViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE96F1B28B7515400414BE7 /* CharacterItemViewTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +129,10 @@
 		1EE831F828AFEFD200EFFB8D /* CharacterItemMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterItemMock.swift; sourceTree = "<group>"; };
 		1EE831FA28AFF08400EFFB8D /* CharacterItemViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterItemViewModelTests.swift; sourceTree = "<group>"; };
 		1EE831FC28AFF0C400EFFB8D /* GetCharacterItemUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharacterItemUseCaseMock.swift; sourceTree = "<group>"; };
+		1EE96F1228B7435F00414BE7 /* CharacterRowViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRowViewTests.swift; sourceTree = "<group>"; };
+		1EE96F1728B7482F00414BE7 /* CharacterListViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewTests.swift; sourceTree = "<group>"; };
+		1EE96F1928B750B100414BE7 /* CharacterDetailViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewTests.swift; sourceTree = "<group>"; };
+		1EE96F1B28B7515400414BE7 /* CharacterItemViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterItemViewTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EE96F1628B745FD00414BE7 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +182,7 @@
 		1E8697A328AE65930052ACF6 /* MarvelAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				1EE96F1128B7433F00414BE7 /* SnapshotTests */,
 				1E8697B028AE669A0052ACF6 /* UnitTests */,
 				1E8697AB28AE66190052ACF6 /* Mocks */,
 			);
@@ -447,6 +458,17 @@
 			path = CharacterItem;
 			sourceTree = "<group>";
 		};
+		1EE96F1128B7433F00414BE7 /* SnapshotTests */ = {
+			isa = PBXGroup;
+			children = (
+				1EE96F1228B7435F00414BE7 /* CharacterRowViewTests.swift */,
+				1EE96F1728B7482F00414BE7 /* CharacterListViewTests.swift */,
+				1EE96F1928B750B100414BE7 /* CharacterDetailViewTests.swift */,
+				1EE96F1B28B7515400414BE7 /* CharacterItemViewTests.swift */,
+			);
+			path = SnapshotTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -464,6 +486,9 @@
 				1E8697A728AE65930052ACF6 /* PBXTargetDependency */,
 			);
 			name = MarvelAppTests;
+			packageProductDependencies = (
+				1EE96F1528B745FD00414BE7 /* SnapshotTesting */,
+			);
 			productName = MarvelAppTests;
 			productReference = 1E8697A228AE65930052ACF6 /* MarvelAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -481,6 +506,8 @@
 			dependencies = (
 			);
 			name = MarvelApp;
+			packageProductDependencies = (
+			);
 			productName = MarvelApp;
 			productReference = 1EA9BACC28AE065F002F6C36 /* MarvelApp.app */;
 			productType = "com.apple.product-type.application";
@@ -535,6 +562,9 @@
 				Base,
 			);
 			mainGroup = 1EA9BAC328AE065F002F6C36;
+			packageReferences = (
+				1EE96F1428B745FD00414BE7 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			productRefGroup = 1EA9BACD28AE065F002F6C36 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -585,12 +615,16 @@
 				1E8697A528AE65930052ACF6 /* CharactersRepositoryTests.swift in Sources */,
 				1EE831F128AFE47400EFFB8D /* ComicRequestMock.swift in Sources */,
 				1E8697B428AE9FB30052ACF6 /* GetCharacterListUseCaseMock.swift in Sources */,
+				1EE96F1C28B7515400414BE7 /* CharacterItemViewTests.swift in Sources */,
 				1EE831FD28AFF0C400EFFB8D /* GetCharacterItemUseCaseMock.swift in Sources */,
 				1EE831F528AFE53100EFFB8D /* SerieRequestMock.swift in Sources */,
 				1EE831F728AFEF8200EFFB8D /* GetCharacterItemUseCaseTest.swift in Sources */,
 				1EE831F928AFEFD200EFFB8D /* CharacterItemMock.swift in Sources */,
+				1EE96F1A28B750B100414BE7 /* CharacterDetailViewTests.swift in Sources */,
 				1E8697B228AE9D3C0052ACF6 /* CharactersRequestMock.swift in Sources */,
 				1E8697BE28AEACB70052ACF6 /* CharacterListViewModelTests.swift in Sources */,
+				1EE96F1328B7435F00414BE7 /* CharacterRowViewTests.swift in Sources */,
+				1EE96F1828B7482F00414BE7 /* CharacterListViewTests.swift in Sources */,
 				1E8697AD28AE66280052ACF6 /* URLSessionDataSourceMock.swift in Sources */,
 				1E8697BA28AEA0D60052ACF6 /* CharacterListMock.swift in Sources */,
 				1EE831DC28AF741D00EFFB8D /* StringUtilsTests.swift in Sources */,
@@ -945,6 +979,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1EE96F1428B745FD00414BE7 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1EE96F1528B745FD00414BE7 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1EE96F1428B745FD00414BE7 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1EA9BAC428AE065F002F6C36 /* Project object */;
 }

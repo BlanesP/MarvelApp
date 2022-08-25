@@ -108,7 +108,7 @@ struct CharacterListView: View {
 
 //MARK: - AdditionalViews
 
-private struct CharacterRowView: View {
+struct CharacterRowView: View {
 
     let character: CharacterList.Character
 
